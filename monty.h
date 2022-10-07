@@ -62,34 +62,18 @@ typedef struct glob_var
 	int MODE;
 } vars;
 
-<<<<<<< HEAD
-
 extern vars var;
 
 /*  ================================================================= */
 /* functions */
 /* ================================================================== */
-
+int start_vars(vas *var);
 void free_all(void);
 instruction_t *create_instru();
 int _isdigit(char *string);
-=======
-/**
- * struct instruction_s - opcode and its function
- * @opcode: the opcode
- * @f: function to handle the opcode
- * Description: opcode and its function for stack, queues, LIFO, FIFO
- */
-typedef struct instruction_s
-{
-	char *opcode;
-	void (*f)(stack_t **stack, unsigned int line_number);
-} instruction_t;
->>>>>>> f3825078fdbfee45a61424cfb02c54dd847a705e
 
 void add(stack_t **stack, unsigned int line_number);
 void swap(stack_t **stack, unsigned int line_number);
-void nop(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
 void push(stack_t **stack, unsigned int line_number);
 void pint(stack_t **stack, unsigned int line_number);
