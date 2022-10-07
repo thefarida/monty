@@ -6,7 +6,7 @@
  * @line_number - File line for execution
  */
 
-void f_pall(stack_t **head, unsigned int number)
+void f_pall(stack_t **stack, unsigned int line_number)
 {
 	stack_t *tmp = *head;
 	(void) line_number;
