@@ -1,12 +1,12 @@
 #include "monty.h"
 
 /**
- * f_pall - Print list
+ * pall - Print list
  * @stack - Double linked list
  * @line_number - File line for execution
  */
 
-void f_pall(stack_t **stack, unsigned int line_number)
+void pall(stack_t **stack, unsigned int line_number)
 {
 	stack_t *tmp = *stack;
 	(void) line_number;
@@ -21,12 +21,12 @@ void f_pall(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * f_push - add node to the stack
+ * push - add node to the stack
  * @head: stack head
  * @counter: line_number
  * Return: no return
 */
-void f_push(stack_t **head, unsigned int counter)
+void push(stack_t **head, unsigned int counter)
 {
 	int n, j = 0, flag = 0;
 
