@@ -1,12 +1,12 @@
 #include "monty.h"
 
 /**
- * f_pint - Print list
+ * pint - Print list
  * @stack - Double linked list
  * @line_number - File line for execution
  */
 
-void f_pint(stack_t **stack, unsigned int line_number)
+void pint(stack_t **stack, unsigned int line_number)
 {
 
 	if (!stack)

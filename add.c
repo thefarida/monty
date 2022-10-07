@@ -1,11 +1,11 @@
 #include "monty.h"
 
 /**
- * f_add - Add the top two elements of the stack
+ * add - Add the top two elements of the stack
  * @stack: Double linked list
  * @line_number: File line of execution
  */
-void f_add(stack_t **stack, unsigned int line_number)
+void add(stack_t **stack, unsigned int line_number)
 {
 	if (!stack || !(*stack->next)
 	{
@@ -15,5 +15,5 @@ void f_add(stack_t **stack, unsigned int line_number)
 	}
 
 	(*stack)->next->n = (*stack)->next->n + (*stack)->n;
-	f_pop(stack, line_number);
+	pop(stack, line_number);
 }
