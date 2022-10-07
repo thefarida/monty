@@ -18,6 +18,6 @@ void free_all(void)
 			var.head = var.head->next;
 			free(var.head->prev);
 		}
-		free (var.head);
+		free(var.head);
 	}
 }

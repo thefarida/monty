@@ -42,22 +42,6 @@ typedef struct bus_s
 extern bus_t bus;
 
 /**
- * struct global_vars - Global Variables
- * @file: file name
- * @buff: Getline buffer
- * @head: pointer to list
- * @dict: instruction dictionary
- */
-typedef struct global_vars
-{
-	File *file;
-	char *buff;
-	instruction_t *dict;
-	stack_t *head;
-} vars;
-
-
-/**
  * struct instruction_s - opcode and its function
  * @opcode: the opcode
  * @f: function to handle the opcode
