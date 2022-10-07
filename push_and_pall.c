@@ -2,13 +2,13 @@
 
 /**
  * f_pall - Print list
- * @stack_t - Double linked list
+ * @stack - Double linked list
  * @line_number - File line for execution
  */
 
 void f_pall(stack_t **stack, unsigned int line_number)
 {
-	stack_t *tmp = *head;
+	stack_t *tmp = *stack;
 	(void) line_number;
 
 	if (!tmp)
