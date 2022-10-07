@@ -21,38 +21,44 @@ void pall(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * push - add node to the stack
- * @head: stack head
- * @counter: line_number
- * Return: no return
-*/
-void push(stack_t **head, unsigned int counter)
+ * push - Add a new value to the list
+ * @stack: Double linked list
+ * @line_number: File line for execution
+ */
+void push(stack_t **head, unsigned int line_number)
 {
-	int n, j = 0, flag = 0;
+	stack_t *tmp = NULL, *tm = *stack;
+	char *num;
 
-	if (bus.arg)
+	num = strtok(NULL, " \r\t\n");
+	if (num == NULL || (_isdigit(num) != 0 && num[0] != '-'))
 	{
-		if (bus.arg[0] == '-')
-			j++;
-		for (; bus.arg[j] != '\0'; j++)
-		{
-			if (bus.arg[j] > 57 || bus.arg[j] < 48)
-				flag = 1; }
-		if (flag == 1)
-		{ fprintf(stderr, "L%d: usage: push integer\n", counter);
-			fclose(bus.file);
-			free(bus.content);
-			free_stack(*head);
-			exit(EXIT_FAILURE); }}
+		fprintf(stderr, "L%u: usage: push integer\n", line_number);
+		free_all();
+		exit(EXIT_FAILURE);
+	}
+	tmp = malloc(sizeof(stack_t));
+	if (!tmp)
+	{
+		fprintf(stderr, "Error: malloc failed\n");
+		free_all();
+		exit(EXIT_FAILURE);
+	}
+	tmp->n = atoi(num);
+	if (var.MODE == 0 || !*stack)
+	{
+		tmp->next = *stack;
+		tmp->prev = NULL;
+		if (*stack)
+			(*stack)->prev = tmp;
+		*stack = tmp;
+	}
 	else
-	{ fprintf(stderr, "L%d: usage: push integer\n", counter);
-		fclose(bus.file);
-		free(bus.content);
-		free_stack(*head);
-		exit(EXIT_FAILURE); }
-	n = atoi(bus.arg);
-	if (bus.lifi == 0)
-		addnode(head, n);
-	else
-		addqueue(head, n);
+	{
+		while (tm->next)
+			tm = tm->next;
+		tm->next = tmp;
+		tmp->prev = tm;
+		tmp->next = NULL;
+	}
 }

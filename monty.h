@@ -67,7 +67,7 @@ extern vars var;
 /*  ================================================================= */
 /* functions */
 /* ================================================================== */
-int start_vars(vas *var);
+int start_vars(vars *var);
 void free_all(void);
 instruction_t *create_instru();
 int _isdigit(char *string);
@@ -79,7 +79,7 @@ void push(stack_t **stack, unsigned int line_number);
 void pint(stack_t **stack, unsigned int line_number);
 void pop(stack_t **stack, unsigned int line_number);
 void sub(stack_t **stack, unsigned int line_number);
-void div(stack_t **stack, unsigned int line_number);
+void _div(stack_t **stack, unsigned int line_number);
 void mul(stack_t **stack, unsigned int line_number);
 void mod(stack_t **stack, unsigned int line_number);
 void pchar(stack_t **stack, unsigned int line_number);
