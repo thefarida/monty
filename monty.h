@@ -3,14 +3,14 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <sys/uio.h>
-#include <unistd.h>
-#include <fcntl.h>
 #include <string.h>
-#include <ctype.h>
+#include <unistd.h>
+#include <sys/stat.h>
+#include <sys/types.h>
+#include <sys/uio.h>
 #include <errno.h>
+#include <fcntl.h>
+#include <ctype.h>
 #define Buffsize 30
 
 /**
@@ -21,7 +21,6 @@
  *
  * Description: doubly linked list node structure for stack, queues, LIFO, FIFO
  */
-
 typedef struct stack_s
 {
 	int n;
@@ -30,48 +29,67 @@ typedef struct stack_s
 } stack_t;
 
 /**
- * struct bus_s - variables -args, file, line content
- * @arg: value
- * @file: pointer to monty file
- * @content: line content
- * @buff: Getline buffer
- * @head: pointer to the list
- * @lifi: flag change stack <-> queue
- * Description: carries values through the program
- */
-typedef struct bus_s
-{
-	char *arg;
-	FILE *file;
-	char *content;
-	int lifi;
-	char *buff;
-	instruction_t *dict;
-	stack_t *head;
-}  bus_t;
-extern bus_t bus;
-
-
-/**
  * struct instruction_s - opcode and its function
  * @opcode: the opcode
  * @f: function to handle the opcode
+ *
  * Description: opcode and its function for stack, queues, LIFO, FIFO
  */
 typedef struct instruction_s
 {
-	char *opcode;
-	void (*f)(stack_t **stack, unsigned int line_number);
+char *opcode;
+void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-char *_realloc(char *ptr, unsigned int old_size, unsigned int new_size);
-ssize_t getstdin(char **lineptr, int file);
-char  *clean_line(char *content);
-void push(stack_t **head, unsigned int number);
-void pall(stack_t **stack, unsigned int line_number);
-void pint(stack_t **stack, unsigned int line_number);
-void pop(stack_t **head, unsigned int counter);
-void swap(stack_t **head, unsigned int counter);
+/**
+ * struct glob_var - golbal variables
+ * @file: file name
+ * @buff: Getline buffer
+ * @tmp: Getline counter
+ * @dict: instruction dictionary
+ * @head: pointer to list
+ * @line_number: Stores file current line@
+ * MODE: Program configuration stack or queue
+ */
+typedef struct glob_var
+{
+	FILE *file;
+	char *buff;
+	size_t tmp;
+	instruction_t *dict;
+	stack_t *head;
+	unsigned int line_number;
+	int MODE;
+} vars;
+
+
+extern vars var;
+
+/*  ================================================================= */
+/* functions */
+/* ================================================================== */
+
+void free_all(void);
+instruction_t *create_instru();
+int _isdigit(char *string);
+
 void add(stack_t **stack, unsigned int line_number);
-void nop(stack_t **stack, unsigned int counter);
+void swap(stack_t **stack, unsigned int line_number);
+void nop(stack_t **stack, unsigned int line_number);
+void pall(stack_t **stack, unsigned int line_number);
+void push(stack_t **stack, unsigned int line_number);
+void pint(stack_t **stack, unsigned int line_number);
+void pop(stack_t **stack, unsigned int line_number);
+void sub(stack_t **stack, unsigned int line_number);
+void div(stack_t **stack, unsigned int line_number);
+void mul(stack_t **stack, unsigned int line_number);
+void mod(stack_t **stack, unsigned int line_number);
+void pchar(stack_t **stack, unsigned int line_number);
+void pstr(stack_t **stack, unsigned int line_number);
+void rotl(stack_t **stack, unsigned int line_number);
+void rotr(stack_t **stack, unsigned int line_number);
+void stack(stack_t **stack, unsigned int line_number);
+void queue(stack_t **stack, unsigned int line_number);
+
+
 #endif
