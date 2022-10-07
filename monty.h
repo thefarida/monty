@@ -42,6 +42,22 @@ typedef struct bus_s
 extern bus_t bus;
 
 /**
+ * struct global_vars - Global Variables
+ * @file: file name
+ * @buff: Getline buffer
+ * @head: pointer to list
+ * @dict: instruction dictionary
+ */
+typedef struct global_vars
+{
+	File *file;
+	char *buff;
+	instruction_t *dict;
+	stack_t *head;
+} vars;
+
+
+/**
  * struct instruction_s - opcode and its function
  * @opcode: the opcode
  * @f: function to handle the opcode
@@ -63,7 +79,7 @@ int execute(char *content, stack_t **head, unsigned int counter, FILE *file);
 void free_stack(stack_t *head);
 void f_pop(stack_t **head, unsigned int counter);
 void f_swap(stack_t **head, unsigned int counter);
-void f_add(stack_t **head, unsigned int counter);
+void f_add(stack_t **stack, unsigned int line_number);
 void f_nop(stack_t **stack, unsigned int counter);
 void f_sub(stack_t **head, unsigned int counter);
 void f_div(stack_t **head, unsigned int counter);
