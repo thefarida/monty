@@ -7,3 +7,7 @@ Adding an element at the front (top) of a stack is knonn as push. the nen elemen
 
 ## pop()
 removing an element from the top of a stack is called the pop operation. elements are added and removed from the top of the stack.
+
+### Contributors
+Emmanuel Ebuka Ugoh
+Farida Ibrahim
