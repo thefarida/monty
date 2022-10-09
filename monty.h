@@ -56,7 +56,10 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6c050224da16348ac7b7f4af5da35b70c3941bbe
 char *_realloc(char *ptr, unsigned int old_size, unsigned int new_size);
 ssize_t getstdin(char **lineptr, int file);
 char  *clean_line(char *content);
